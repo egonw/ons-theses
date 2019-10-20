@@ -42,7 +42,7 @@ for (i in 1..results.rowCount) {
   )
 }
 csidHits.collect{
-  qid,csid -> println "Chemspider $csid is in Wikidata as $qid"
+  csid,qid -> println "Chemspider $csid is in Wikidata as $qid"
 }
 
 
