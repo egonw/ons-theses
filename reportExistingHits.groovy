@@ -41,20 +41,8 @@ for (i in 1..results.rowCount) {
     results.get(i, "qid").substring(31)
   )
 }
-println csidHits
-
-System.exit(0)
-
-// ChemSpiderAuthor,ChemSpiderTitle,Year,ChemSpiderThesisID,ChemSpiderThesisURL,ChemSpiderCompoundID,ChemSpiderID,ChemSpiderCompoundURL,IdentifiersOrgCompoundURL
-for (line in parseCsv(new FileReader('ThesesToCompoundsMapping.csv'))) {
-  try {
-    csid = line.ChemSpiderID
-    mol = chemspider.download(new Integer(csid))
-    println "${mol.toSMILES()}\t$csid"
-  } catch (Exception exception) {
-    message = exception.message.replace('\n',"; ")
-    println "# $message"
-  }
+csidHits.collect{
+  qid,csid -> println "Chemspider $csid is in Wikidata as $qid"
 }
 
 
