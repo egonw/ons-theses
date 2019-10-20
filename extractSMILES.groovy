@@ -41,16 +41,17 @@ for (i in 1..results.rowCount) {
     results.get(i, "qid").substring(31)
   )
 }
-println csidHits
-
-System.exit(0)
 
 // ChemSpiderAuthor,ChemSpiderTitle,Year,ChemSpiderThesisID,ChemSpiderThesisURL,ChemSpiderCompoundID,ChemSpiderID,ChemSpiderCompoundURL,IdentifiersOrgCompoundURL
 for (line in parseCsv(new FileReader('ThesesToCompoundsMapping.csv'))) {
   try {
     csid = line.ChemSpiderID
-    mol = chemspider.download(new Integer(csid))
-    println "${mol.toSMILES()}\t$csid"
+    if (!csidHits.containsKey(csid)) {
+      mol = chemspider.download(new Integer(csid))
+      println "${mol.toSMILES()}\t$csid"
+    } else {
+      println "# ChemSpider ID $csid is already in Wikidata"
+    }
   } catch (Exception exception) {
     message = exception.message.replace('\n',"; ")
     println "# $message"
