@@ -1,6 +1,6 @@
 @Grab("com.xlson.groovycsv:groovycsv:1.1")
-@Grab(group='io.github.egonw.bacting', module='managers-chemspider', version='0.0.11-SNAPSHOT')
-@Grab(group='io.github.egonw.bacting', module='managers-rdf', version='0.0.11-SNAPSHOT')
+@Grab(group='io.github.egonw.bacting', module='managers-chemspider', version='0.0.11')
+@Grab(group='io.github.egonw.bacting', module='managers-rdf', version='0.0.11')
 
 import static com.xlson.groovycsv.CsvParser.parseCsv
 import static java.util.stream.Collectors.joining
